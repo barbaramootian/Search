@@ -1,0 +1,80 @@
+<div class="container-fluid myrepos">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-5">
+      <div>
+        <form action="" #myForm="ngForm">
+          <label for=""> Github Username:</label><br />
+          <input
+            type="text"
+            class="form-control inputfield"
+            ngModel
+            name="search"
+            placeholder="Your github username "
+          /><br />
+          <button
+            type="submit"
+            (click)="accessRepositories()"
+            id="myBtn"
+            class="btn btn-info"
+          >
+            Search Repositories</button
+          ><br /><br />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr id="hrBottom" />
+  <div class="row mt-5 showall" *ngIf="displayUserRepos">
+    <div class="text-center m-2">
+        
+      <h2 class="title">Repositories for: {{ userSearch }}</h2>
+    </div>
+
+    <div id="repos" *ngFor="let repository of totalRepositories; let i = index">
+      <div class="card card-repo mysearchRepos">
+        <div>
+          <h2 appHighlight>{{ repository.name }}</h2>
+        </div>
+
+        <div>
+          <h5>
+            Description:
+            {{
+              repository.description
+                ? (repository.description | slice: 0:80)
+                : "No repository description"
+            }}---
+          </h5>
+        </div>
+
+        <div>
+          <p class="card-text">
+            <strong
+              >Created on:
+              <span class="">{{ repository.created_at | date }}</span></strong
+            >
+          </p>
+        </div>
+        <br />
+        <p class="card-text">
+          <strong
+            >Period:
+            <span class="">{{
+              repository.created_at | timePassed
+            }}</span></strong
+          >
+        </p>
+
+        <br />
+
+        <button class="btn btn-info view">
+          <a href="{{ repository.html_url }}" target="_blank">View Project</a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--------------------/Repositories----------------------->
+</div>

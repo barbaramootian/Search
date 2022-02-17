@@ -1,0 +1,52 @@
+<div class="container-fluid owner">
+
+    <div class="row">
+        <div class="mt-5">
+            <div>
+                <form action="" #myForm="ngForm">
+
+                    <label for=""> Github Username:</label><br>
+                    <input type="text" class="form-control inputfield" ngModel name="search" placeholder="Your github username "><br>
+                    <button type="submit" (click)="accessUser()" id="myBtn" class="btn btn-info">Search User</button><br><br>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row " *ngIf="userExist">
+
+        <div class="col-md-4 profileName">
+
+            <div>
+                <img src="{{individualsInformation.avatar_url}}" alt="Image">
+
+            </div>
+        </div>
+        <div class="col-md-8 profileDetails">
+
+            <ul>
+                <h3>Username: {{individualsInformation.login}}</h3>
+                <hr>
+                <h3>Location: {{individualsInformation?.location ? individualsInformation?.location : "No Location Found" }}</h3>
+                <hr>
+
+                <h3>Address: {{individualsInformation?.location ? individualsInformation?.location : 'No address'}}</h3>
+                <hr>
+
+                <h3>Joined on: {{individualsInformation.created_at| date}}</h3>
+                <hr>
+
+            </ul>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

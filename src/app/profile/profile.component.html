@@ -1,0 +1,66 @@
+<div class="container-fluid profile">
+
+
+    <div class="row">
+        <div class="col-md-4 ">
+
+            <div>
+
+                <img src="{{userData.avatar_url}}" alt="Image">
+
+            </div>
+        </div>
+        <div class="col-md-8 ">
+
+            <ul>
+                <h3>Username: {{userData.login}}</h3>
+                <hr>
+                <h3>Location: {{userData?.location ? userData?.location : "No Location Found" }}</h3>
+                <hr>
+                <h3>Created: {{userData.created_at |date}}</h3>
+                <hr>
+            </ul>
+
+
+
+            <div class="row">
+                <div class="col md-6">
+                    <button class="btn btn-secondary ">{{userData.followers}} Followers</button><br><br>
+                    <button class="btn btn-primary">Following {{userData.following}}</button>
+
+                </div>
+                <div class="col md-6">
+
+                </div>
+            </div>
+
+        </div>
+        <hr id="hrBottom">
+        <div class="row ">
+            <h1 class="text-center ">Barbra Repositories</h1>
+
+
+            <div class="panel-body"  *ngFor="let repository of repositories">
+                <div>
+
+                    <h2 appHighlight> {{repository.name}} </h2>
+                </div>
+                <div>
+                    <h5> Description: {{ repository.description ? (repository.description | slice: 0: 80) : 'No repository description' }}---</h5>
+                </div>
+                <div>
+
+                    <p class="card-text"><strong>Created: <span class="">{{
+                    repository.created_at | timePassed }}</span></strong> </p>
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-info "><a style="text-decoration:none" href="{{repository.html_url}}" target="_blank">View Project</a>
+            </button>
+            <hr>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
