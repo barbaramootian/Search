@@ -1,6 +1,7 @@
 # Github Search
+* This project was generated with Angular CLI version 13.1.2.
 ## By Barbara Reson Mootian
-## Project Description
+## Description
 
 A user can display GitHub information such as username,profile and list of repositories
 
